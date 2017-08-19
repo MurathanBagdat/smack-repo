@@ -1,0 +1,33 @@
+//
+//  Constants.swift
+//  Smack
+//
+//  Created by Melisa Kısacık on 19.08.2017.
+//  Copyright © 2017 MurathanBagdat. All rights reserved.
+//
+
+import Foundation
+
+typealias CompletionHandler = (_ Success : Bool) -> ()
+
+//typealias Murathan = String                     //  var olan bir type'ı adlandırma!
+//let bagdat : Murathan = "mb"
+
+//Segues
+let TO_LOGINVC_SEGUE = "toLoginVC"
+let TO_CREATE_ACCOUNT_SEGUE = "toCreateAccountSegue"
+let UNWIND_TO_CHANNEL = "unwindToChannel"
+
+
+
+//User Defaults
+
+let TOKEN_Key = "token"
+let LOGED_IN_KEY = "loggedIn"
+let USER_EMAIL = "userEmail"
+
+
+//Url Constants
+
+let BASE_URL = "https://chattychatchattychat.herokuapp.com/v1/"
+let URL_REGISTER = "\(BASE_URL)account/register"

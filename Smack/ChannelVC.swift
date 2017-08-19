@@ -14,8 +14,17 @@ class ChannelVC: UIViewController {
         super.viewDidLoad()
 
         self.revealViewController().rearViewRevealWidth = view.frame.size.width - 60 // rear vc nin ne kadar açılacağının ölçüsü
-        
-        
+     
+    }
+    
+    @IBAction func prepareForUnwind(segue : UIStoryboardSegue){}
+    
+    
+    @IBAction func loginButtonPrsd(_ sender: UIButton) {
+        performSegue(withIdentifier: TO_LOGINVC_SEGUE, sender: nil)
     }
 
+    
+    
+    
 }
