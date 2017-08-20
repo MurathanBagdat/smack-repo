@@ -31,3 +31,26 @@ let USER_EMAIL = "userEmail"
 
 let BASE_URL = "https://chattychatchattychat.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
+let URL_LOGIN = "\(BASE_URL)account/login"
+let URL_ADD_USER = "\(BASE_URL)user/add"
+
+
+
+// Header
+
+let HEADER = [
+    "Content-Type" : "application/json; charset=utf-8"
+]
+let HEADER_ADD_USER = [
+    "Authorization" : "Bearer \(AuthServices.instance.authToken)",
+    "Content-Type" : "application/json; charset=utf-8"
+]
+
+
+
+
+
+
+
+
+

@@ -24,10 +24,10 @@ class LoginVC: UIViewController {
     
     func updateUI(){
         
-        loginButton.layer.cornerRadius = 5
+        
         
     }
-
+    //Actions
     @IBAction func closeBtnPrsd(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -40,4 +40,9 @@ class LoginVC: UIViewController {
     }
 
 
+    //Keyboard Handling
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

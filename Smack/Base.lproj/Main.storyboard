@@ -147,7 +147,7 @@
                                     <action selector="closeBtnPrsd:" destination="uFk-gN-9Pe" eventType="touchUpInside" id="oi6-cp-ERf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-b7-Tdd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-b7-Tdd" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="82" y="317" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.3771215081" green="0.63165313010000002" blue="0.79773765799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -158,6 +158,11 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButtonPrsd:" destination="uFk-gN-9Pe" eventType="touchUpInside" id="xT0-0p-vdK"/>
                                 </connections>
@@ -385,7 +390,7 @@
                                     <action selector="generateBackgroundColorBtnPrsd:" destination="hME-kr-W7w" eventType="touchUpInside" id="XnS-CX-c5t"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kuu-iB-RhU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kuu-iB-RhU" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="82" y="666" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.3771215081" green="0.63165313010000002" blue="0.79773765799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -396,6 +401,11 @@
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="createAccountButtonPrsd:" destination="hME-kr-W7w" eventType="touchUpInside" id="42l-C8-gMd"/>
                                     <action selector="loginButtonPrsd:" destination="uFk-gN-9Pe" eventType="touchUpInside" id="sV6-dt-GtL"/>
@@ -428,6 +438,7 @@
                         <outlet property="emailTextField" destination="blN-Eg-s1X" id="TIz-2Z-cS4"/>
                         <outlet property="passwordTextField" destination="eA6-d1-NaW" id="rwU-8f-q2A"/>
                         <outlet property="userNameTextField" destination="Qz3-Dn-GAa" id="77C-DQ-KLa"/>
+                        <outlet property="userProfileImage" destination="5ug-sb-JHP" id="3ft-z8-qXt"/>
                         <segue destination="98x-p0-Hog" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="b39-50-QAX"/>
                     </connections>
                 </viewController>
