@@ -17,7 +17,7 @@ typealias CompletionHandler = (_ Success : Bool) -> ()
 let TO_LOGINVC_SEGUE = "toLoginVC"
 let TO_CREATE_ACCOUNT_SEGUE = "toCreateAccountSegue"
 let UNWIND_TO_CHANNEL = "unwindToChannel"
-
+let TO_AVATAR_PICKER = "toAvatarPicker"
 
 
 //User Defaults
@@ -46,6 +46,10 @@ let HEADER_ADD_USER = [
     "Content-Type" : "application/json; charset=utf-8"
 ]
 
+
+//Cells
+
+let AVATAR_PICKER_CELL = "avatarCollectionCell"
 
 
 

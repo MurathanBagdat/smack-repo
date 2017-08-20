@@ -47,6 +47,7 @@ class CreateAccountVC: UIViewController {
     }
     
     @IBAction func chooseAvatarButtonPrsd(_ sender: UIButton) {
+        performSegue(withIdentifier: TO_AVATAR_PICKER, sender: nil)
     }
     
     @IBAction func generateBackgroundColorBtnPrsd(_ sender: UIButton) {
