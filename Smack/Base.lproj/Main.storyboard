@@ -75,8 +75,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-ga-OFB">
-                                        <rect key="frame" x="23" y="564" width="144" height="75"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-ga-OFB">
+                                        <rect key="frame" x="113" y="564" width="54" height="75"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -91,19 +91,17 @@
                                     <constraint firstAttribute="trailing" secondItem="L3R-XH-GQX" secondAttribute="trailing" constant="75" id="45H-Kb-XPX"/>
                                     <constraint firstAttribute="trailing" secondItem="asm-AJ-UKn" secondAttribute="trailing" id="4Ik-dZ-syY"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="Fla-De-dJS" secondAttribute="bottom" constant="20" id="7HV-gq-uIi"/>
-                                    <constraint firstItem="eXg-ga-OFB" firstAttribute="centerY" secondItem="Fla-De-dJS" secondAttribute="centerY" id="AXt-X9-oox"/>
                                     <constraint firstItem="L3R-XH-GQX" firstAttribute="centerY" secondItem="69L-ab-if6" secondAttribute="centerY" id="FkZ-bh-ind"/>
-                                    <constraint firstItem="eXg-ga-OFB" firstAttribute="leading" secondItem="Fla-De-dJS" secondAttribute="leading" id="NIX-eJ-52y"/>
                                     <constraint firstItem="Fla-De-dJS" firstAttribute="leading" secondItem="b2p-zA-hf5" secondAttribute="leadingMargin" constant="15" id="NxO-gJ-rEu"/>
-                                    <constraint firstItem="eXg-ga-OFB" firstAttribute="bottom" secondItem="Fla-De-dJS" secondAttribute="bottom" id="RbY-U7-gnL"/>
+                                    <constraint firstItem="eXg-ga-OFB" firstAttribute="centerY" secondItem="Fla-De-dJS" secondAttribute="centerY" id="YRR-Po-jdg"/>
                                     <constraint firstItem="asm-AJ-UKn" firstAttribute="leading" secondItem="b2p-zA-hf5" secondAttribute="leading" id="ZG0-BX-dK3"/>
                                     <constraint firstItem="69L-ab-if6" firstAttribute="top" secondItem="jvN-h5-zA0" secondAttribute="bottom" constant="20" id="bdN-bf-JgP"/>
+                                    <constraint firstItem="eXg-ga-OFB" firstAttribute="leading" secondItem="b2p-zA-hf5" secondAttribute="leading" constant="113" id="ewb-14-hYh"/>
                                     <constraint firstItem="Fla-De-dJS" firstAttribute="top" secondItem="asm-AJ-UKn" secondAttribute="bottom" constant="20" id="f3l-MV-3Eg"/>
-                                    <constraint firstItem="eXg-ga-OFB" firstAttribute="top" secondItem="Fla-De-dJS" secondAttribute="top" id="hB5-aS-g4V"/>
+                                    <constraint firstItem="eXg-ga-OFB" firstAttribute="top" secondItem="Fla-De-dJS" secondAttribute="top" id="hGc-SE-uwc"/>
                                     <constraint firstItem="jvN-h5-zA0" firstAttribute="top" secondItem="b2p-zA-hf5" secondAttribute="topMargin" constant="23" id="joE-EA-Vhd"/>
                                     <constraint firstItem="jvN-h5-zA0" firstAttribute="leading" secondItem="b2p-zA-hf5" secondAttribute="leadingMargin" constant="15" id="qXL-2q-vVG"/>
                                     <constraint firstItem="69L-ab-if6" firstAttribute="leading" secondItem="b2p-zA-hf5" secondAttribute="leadingMargin" constant="15" id="ySX-tx-XWB"/>
-                                    <constraint firstItem="eXg-ga-OFB" firstAttribute="trailing" secondItem="Fla-De-dJS" secondAttribute="trailing" constant="69" id="ykO-cD-ayo"/>
                                     <constraint firstItem="asm-AJ-UKn" firstAttribute="top" secondItem="L3R-XH-GQX" secondAttribute="bottom" constant="20" id="zu2-31-HJM"/>
                                 </constraints>
                             </view>
@@ -117,6 +115,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="userNameButton" destination="eXg-ga-OFB" id="qhz-53-QBN"/>
+                        <outlet property="userProfileImage" destination="Fla-De-dJS" id="wZA-Nz-yrF"/>
                         <segue destination="uFk-gN-9Pe" kind="show" identifier="toLoginVC" id="Mp9-Ts-htn"/>
                     </connections>
                 </viewController>
@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q33-Kk-Qa2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918" y="-157"/>
+            <point key="canvasLocation" x="1639" y="-158"/>
         </scene>
         <!--Create AccountVC-->
         <scene sceneID="Usw-6T-GBf">
@@ -453,7 +453,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBF-65-SZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="98x-p0-Hog" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2766.666666666667" y="-157.33695652173915"/>
+            <point key="canvasLocation" x="2128" y="-158"/>
         </scene>
         <!--Avatar PickerVC-->
         <scene sceneID="YmG-hO-4vb">
@@ -547,7 +547,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jin-D3-mCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3582.608695652174" y="-157.33695652173915"/>
+            <point key="canvasLocation" x="2595" y="-158"/>
         </scene>
         <!--ChatVC-->
         <scene sceneID="jva-EW-9fb">
@@ -602,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABh-LK-lu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="531"/>
+            <point key="canvasLocation" x="1110" y="593"/>
         </scene>
     </scenes>
     <resources>

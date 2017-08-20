@@ -32,4 +32,59 @@ class UserDataService {
     func setAvatarNama(avatarName : String){
         self.avatarName = avatarName
     }
+    
+    func returnUIColorFromString(component: String) -> UIColor {
+        //"[0.5, 0.5, 0.5, 1]"
+        
+        print(component)
+        
+        let scanner = Scanner(string: component)
+        let skipped = CharacterSet(charactersIn: "[], ")
+        let upToComma = CharacterSet(charactersIn: ",")
+        // let upTo = CharacterSet(charactersIn : "]")
+        
+        scanner.charactersToBeSkipped = skipped
+        
+        var r, g, b, a : NSString?
+        
+        scanner.scanUpToCharacters(from: upToComma, into: &r)
+        
+        scanner.scanUpToCharacters(from: upToComma, into: &g)
+        
+        scanner.scanUpToCharacters(from: upToComma, into: &b)
+
+        scanner.scanUpToCharacters(from: upToComma , into: &a)
+        
+        
+        
+        guard let rUnwrapped = r else {return UIColor.lightGray}
+        
+        guard let gUnwrapped = g else {return UIColor.lightGray}
+        
+        guard let bUnwrapped = b else {return UIColor.lightGray}
+        
+        guard let aUnwrapped = a else {return UIColor.lightGray}
+        
+        print("rUnwrapped: " + (rUnwrapped as String))
+        print("gUnwrapped: " + (gUnwrapped as String))
+        print("bUnwrapped: " + (bUnwrapped as String))
+        print("aUnwrapped: " + (aUnwrapped as String))
+
+        let rCGFloat = CGFloat(rUnwrapped.doubleValue)
+        let gCGFloat = CGFloat(gUnwrapped.doubleValue)
+        let bCGFloat = CGFloat(bUnwrapped.doubleValue)
+        let aCGFloat = CGFloat(aUnwrapped.doubleValue)
+        
+        let color = UIColor(red: rCGFloat, green: gCGFloat, blue: bCGFloat, alpha: aCGFloat)
+        
+        return color
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 }

@@ -110,9 +110,9 @@ class AuthServices {
             "name" : name,
             "email" : email.lowercased(),
             "avatarName" : avatarName,
-            "avatatColor" : avatarColor
+            "avatarColor" : avatarColor
         ]
-        
+   
         Alamofire.request(URL_ADD_USER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER_ADD_USER).responseJSON { (response) in
             
             if response.result.error == nil {
@@ -126,6 +126,8 @@ class AuthServices {
                 let id = json["_id"].stringValue
                 let avatarName = json["avatarName"].stringValue
                 let avatarColor = json["avatarColor"].stringValue
+                
+                print(avatarColor)
                 
                 UserDataService.instance.setUserData(id: id, color: avatarColor, avatarName: avatarName, email: email, name: name)
                 

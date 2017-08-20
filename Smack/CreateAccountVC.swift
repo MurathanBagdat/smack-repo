@@ -26,7 +26,7 @@ class CreateAccountVC: UIViewController {
     //Varibles
     
     var avatarName = "profileDefault"   //user kendine avatar şeçmezse default
-    var avatarColor = "[0.5 , 0.5, 0.5, 1]"  //lightgray color Jonnhy will explain later
+    var avatarColor = "[0.5, 0.5, 0.5, 1]"  //lightgray color Jonnhy will explain later
     var bgColor : UIColor?
     
     
@@ -79,7 +79,10 @@ class CreateAccountVC: UIViewController {
         let g  = CGFloat(arc4random_uniform(255)) / 255
         let b  = CGFloat(arc4random_uniform(255)) / 255
         
+        avatarColor = "[\(r), \(g), \(b), 1]"
+        
         bgColor = UIColor(red: r, green: g, blue: b, alpha: 1)
+        
         UIView.animate(withDuration: 0.2){
             self.userProfileImage.backgroundColor = self.bgColor
         }
@@ -108,6 +111,7 @@ class CreateAccountVC: UIViewController {
                         AuthServices.instance.createUser(name: userName, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (succes) in
                             
                             if succes{
+                                
                                 self.spinner.isHidden = true
                                 self.spinner.stopAnimating()
                                 UIApplication.shared.endIgnoringInteractionEvents()
