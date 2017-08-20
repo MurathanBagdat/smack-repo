@@ -19,17 +19,20 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         updateUI()
+         setUpView()
     }
     
-    func updateUI(){
+    func setUpView(){
         
-        
+        userNameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSForegroundColorAttributeName : SMACK_PURPLE_PLACEHOLDER])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSForegroundColorAttributeName : SMACK_PURPLE_PLACEHOLDER])
         
     }
     //Actions
     @IBAction func closeBtnPrsd(_ sender: UIButton) {
+        
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func loginButtonPrsd(_ sender: UIButton) {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07C3A20D1F49E75C005F2805 /* AvatarPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3A20C1F49E75C005F2805 /* AvatarPickerVC.swift */; };
 		07C3A20F1F49E7A4005F2805 /* AvatarPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3A20E1F49E7A4005F2805 /* AvatarPickerCell.swift */; };
+		07C3A2111F4A33F1005F2805 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3A2101F4A33F1005F2805 /* CircleImage.swift */; };
 		07CB5B921F473CE2001681E8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CB5B911F473CE2001681E8 /* SWRevealViewController.m */; };
 		07CB5B971F474B4C001681E8 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CB5B961F474B4C001681E8 /* ChatVC.swift */; };
 		07CB5B991F474B64001681E8 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CB5B981F474B64001681E8 /* ChannelVC.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		07C3A20C1F49E75C005F2805 /* AvatarPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarPickerVC.swift; sourceTree = "<group>"; };
 		07C3A20E1F49E7A4005F2805 /* AvatarPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarPickerCell.swift; sourceTree = "<group>"; };
+		07C3A2101F4A33F1005F2805 /* CircleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		07CB5B8F1F473CE2001681E8 /* Smack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smack-Bridging-Header.h"; sourceTree = "<group>"; };
 		07CB5B901F473CE2001681E8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		07CB5B911F473CE2001681E8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				07D96A8F1F4797D100C690D5 /* GradientView.swift */,
 				07FED93E1F48A97E0063D223 /* RoundedButton.swift */,
 				07C3A20E1F49E7A4005F2805 /* AvatarPickerCell.swift */,
+				07C3A2101F4A33F1005F2805 /* CircleImage.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				07CB5B971F474B4C001681E8 /* ChatVC.swift in Sources */,
 				07C3A20D1F49E75C005F2805 /* AvatarPickerVC.swift in Sources */,
 				07FED93F1F48A97E0063D223 /* RoundedButton.swift in Sources */,
+				07C3A2111F4A33F1005F2805 /* CircleImage.swift in Sources */,
 				07D767C21F47307E00E21A44 /* AppDelegate.swift in Sources */,
 				07E8A6A31F48705B00D46809 /* CreateAccountVC.swift in Sources */,
 				07E8A6A11F4869CE00D46809 /* LoginVC.swift in Sources */,

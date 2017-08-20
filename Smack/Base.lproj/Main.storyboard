@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WOu-Mc-ehs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -63,7 +63,7 @@
                                         <rect key="frame" x="278" y="80" width="22" height="22"/>
                                         <state key="normal" image="addChannelButton"/>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Fla-De-dJS">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Fla-De-dJS" customClass="CircleImage" customModule="Smack" customModuleProvider="target">
                                         <rect key="frame" x="23" y="564" width="75" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="ckL-AQ-Mx7"/>
@@ -196,7 +196,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25P-Aj-zOw">
                                         <rect key="frame" x="0.0" y="83" width="250" height="2"/>
@@ -337,7 +337,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCX-7M-Fl0">
                                         <rect key="frame" x="0.0" y="129" width="250" height="2"/>
@@ -355,7 +355,7 @@
                                 <color key="textColor" red="0.1871688366" green="0.27429246899999998" blue="0.71483731269999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="5ug-sb-JHP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="5ug-sb-JHP" customClass="CircleImage" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="137.5" y="318" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="19j-2j-fHX"/>
@@ -411,6 +411,10 @@
                                     <action selector="loginButtonPrsd:" destination="uFk-gN-9Pe" eventType="touchUpInside" id="sV6-dt-GtL"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tjM-jK-XoL">
+                                <rect key="frame" x="169" y="289" width="37" height="37"/>
+                                <color key="color" red="0.1871688366" green="0.27429246899999998" blue="0.71483731269999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -419,6 +423,7 @@
                             <constraint firstItem="Q8Q-4M-ZJ3" firstAttribute="top" secondItem="5ug-sb-JHP" secondAttribute="top" id="AWh-nF-RNI"/>
                             <constraint firstItem="Q8Q-4M-ZJ3" firstAttribute="top" secondItem="Iao-wU-Q3J" secondAttribute="bottom" constant="22" id="BTf-8n-KFs"/>
                             <constraint firstItem="3BF-OM-cJJ" firstAttribute="centerX" secondItem="q93-TS-Wbv" secondAttribute="centerX" id="ByI-YX-7qK"/>
+                            <constraint firstItem="tjM-jK-XoL" firstAttribute="top" secondItem="2fc-zv-ucp" secondAttribute="bottom" constant="157.5" id="GOB-PV-k5c"/>
                             <constraint firstItem="Kuu-iB-RhU" firstAttribute="centerX" secondItem="q93-TS-Wbv" secondAttribute="centerX" id="GiL-je-mOm"/>
                             <constraint firstItem="3BF-OM-cJJ" firstAttribute="top" secondItem="Q8Q-4M-ZJ3" secondAttribute="bottom" constant="8" id="J91-rY-hFn"/>
                             <constraint firstItem="5ug-sb-JHP" firstAttribute="top" secondItem="Iao-wU-Q3J" secondAttribute="bottom" constant="22" id="PLs-R1-8sY"/>
@@ -430,6 +435,7 @@
                             <constraint firstItem="AIi-JG-VHN" firstAttribute="top" secondItem="h0P-4b-MqW" secondAttribute="bottom" constant="8" id="hng-fg-Uvk"/>
                             <constraint firstItem="5UV-Ik-zWO" firstAttribute="top" secondItem="Kuu-iB-RhU" secondAttribute="bottom" constant="20" id="kEg-Fg-b5n"/>
                             <constraint firstItem="Q8Q-4M-ZJ3" firstAttribute="centerX" secondItem="q93-TS-Wbv" secondAttribute="centerX" id="mHN-4s-ref"/>
+                            <constraint firstItem="tjM-jK-XoL" firstAttribute="centerX" secondItem="q93-TS-Wbv" secondAttribute="centerX" id="ont-pF-KYA"/>
                             <constraint firstItem="2fc-zv-ucp" firstAttribute="centerX" secondItem="q93-TS-Wbv" secondAttribute="centerX" id="paz-6r-d0x"/>
                         </constraints>
                     </view>
@@ -437,6 +443,7 @@
                         <outlet property="createAccountButton" destination="Kuu-iB-RhU" id="TUi-eh-bih"/>
                         <outlet property="emailTextField" destination="blN-Eg-s1X" id="TIz-2Z-cS4"/>
                         <outlet property="passwordTextField" destination="eA6-d1-NaW" id="rwU-8f-q2A"/>
+                        <outlet property="spinner" destination="tjM-jK-XoL" id="kgw-XR-b1G"/>
                         <outlet property="userNameTextField" destination="Qz3-Dn-GAa" id="77C-DQ-KLa"/>
                         <outlet property="userProfileImage" destination="5ug-sb-JHP" id="3ft-z8-qXt"/>
                         <segue destination="98x-p0-Hog" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="b39-50-QAX"/>
@@ -535,6 +542,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="7Nd-VI-afg" id="Eq2-tY-5UN"/>
+                        <outlet property="segmentContorller" destination="RY3-ob-0dY" id="fdO-El-HhG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jin-D3-mCB" userLabel="First Responder" sceneMemberID="firstResponder"/>

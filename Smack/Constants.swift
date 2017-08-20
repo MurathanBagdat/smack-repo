@@ -51,8 +51,13 @@ let HEADER_ADD_USER = [
 
 let AVATAR_PICKER_CELL = "avatarCollectionCell"
 
+//Colors
 
+let SMACK_PURPLE_PLACEHOLDER = #colorLiteral(red: 0.1871688366, green: 0.274292469, blue: 0.7148373127, alpha: 0.5)
 
+//Notification Constants
+
+let NOTIF_USER_DATA_DID_CHANGED = Notification.Name("notifUserDataChanged")
 
 
 

@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum AvatarType {
+    case dark
+    case light
+}
+
 class AvatarPickerCell: UICollectionViewCell {
  
     
@@ -18,6 +23,18 @@ class AvatarPickerCell: UICollectionViewCell {
         setupView()
     }
     
+    
+    func setTheImages(index : Int , avatarType : AvatarType){
+        
+        if avatarType == .dark{
+            avatarImage.image = UIImage(named: "dark\(index)")
+            self.backgroundColor = UIColor.lightGray
+        }else{
+            avatarImage.image = UIImage(named: "light\(index)")
+            self.backgroundColor = UIColor.gray
+        }
+        
+    }
     
     
     func setupView(){
