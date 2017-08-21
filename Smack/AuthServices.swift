@@ -90,7 +90,6 @@ class AuthServices {
                 
                 self.userEmail = json["user"].stringValue
                 self.authToken = json["token"].stringValue
-                
                 self.isLoggedIn = true
                 
                 completion(true)
@@ -112,40 +111,68 @@ class AuthServices {
             "avatarName" : avatarName,
             "avatarColor" : avatarColor
         ]
-   
-        Alamofire.request(URL_ADD_USER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER_ADD_USER).responseJSON { (response) in
+        
+        Alamofire.request(URL_ADD_USER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER_Bearer).responseJSON { (response) in
             
             if response.result.error == nil {
                 
                 guard let data = response.data else {return}
                 
-                let json = JSON(data : data)
-                
-                let name = json["name"].stringValue
-                let email = json["email"].stringValue
-                let id = json["_id"].stringValue
-                let avatarName = json["avatarName"].stringValue
-                let avatarColor = json["avatarColor"].stringValue
-                
-                print(avatarColor)
-                
-                UserDataService.instance.setUserData(id: id, color: avatarColor, avatarName: avatarName, email: email, name: name)
+                self.setupUserInfo(data: data)
                 
                 completion(true)
                 
             }else{
                 
                 completion(false)
-                print("olmadı yar!")
+                print("Failed")
                 
             }
         }
         
     }
     
+    func findUserByEmail(completion : @escaping CompletionHandler) {
+        
+        
+        Alamofire.request(URL_FIND_USER + userEmail, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER_BearerOnly ).responseJSON { (response) in
+            
+            if response.result.error == nil {
+    
+                guard let data = response.data else {return}
+                print(data)
+                print(JSON(data: data))
+                let json = JSON(data : data)
+                print(json)
+                
+                self.setupUserInfo(data: data)
+                
+                completion(true)
+                
+            }else {
+                
+                completion(false)
+                print("Failed FindUserByEmail ")
+            }
+        }
+        
+    }
     
     
-   
+    func setupUserInfo(data : Data){
+        
+        let json = JSON(data : data)
+        
+        let name = json["name"].stringValue
+        let email = json["email"].stringValue
+        let id = json["_id"].stringValue
+        let avatarName = json["avatarName"].stringValue
+        let avatarColor = json["avatarColor"].stringValue
+        
+        UserDataService.instance.setUserData(id: id, color: avatarColor, avatarName: avatarName, email: email, name: name)
+        
+    }
+    
     
     
 }
@@ -153,12 +180,8 @@ class AuthServices {
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+

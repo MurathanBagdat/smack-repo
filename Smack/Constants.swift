@@ -34,6 +34,7 @@ let BASE_URL = "https://chattychatchattychat.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
 let URL_LOGIN = "\(BASE_URL)account/login"
 let URL_ADD_USER = "\(BASE_URL)user/add"
+let URL_FIND_USER = "\(BASE_URL)/user/byEmail/"
 
 
 
@@ -42,10 +43,16 @@ let URL_ADD_USER = "\(BASE_URL)user/add"
 let HEADER = [
     "Content-Type" : "application/json; charset=utf-8"
 ]
-let HEADER_ADD_USER = [
+let HEADER_Bearer = [
     "Authorization" : "Bearer \(AuthServices.instance.authToken)",
     "Content-Type" : "application/json; charset=utf-8"
 ]
+let HEADER_BearerOnly = [
+    
+    "Authorization" : "Bearer \(AuthServices.instance.authToken)"
+    
+]
+
 
 
 //Cells

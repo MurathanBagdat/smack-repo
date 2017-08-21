@@ -64,11 +64,6 @@ class UserDataService {
         
         guard let aUnwrapped = a else {return UIColor.lightGray}
         
-        print("rUnwrapped: " + (rUnwrapped as String))
-        print("gUnwrapped: " + (gUnwrapped as String))
-        print("bUnwrapped: " + (bUnwrapped as String))
-        print("aUnwrapped: " + (aUnwrapped as String))
-
         let rCGFloat = CGFloat(rUnwrapped.doubleValue)
         let gCGFloat = CGFloat(gUnwrapped.doubleValue)
         let bCGFloat = CGFloat(bUnwrapped.doubleValue)
