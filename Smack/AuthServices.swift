@@ -140,8 +140,7 @@ class AuthServices {
             if response.result.error == nil {
     
                 guard let data = response.data else {return}
-                print(data)
-                print(JSON(data: data))
+              
                 let json = JSON(data : data)
                 print(json)
                 

@@ -70,10 +70,36 @@
                                             <constraint firstAttribute="height" constant="75" id="cuG-WW-wv9"/>
                                         </constraints>
                                     </imageView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="asm-AJ-UKn">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="asm-AJ-UKn">
                                         <rect key="frame" x="0.0" y="122" width="375" height="422"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="channelCell" id="DPv-va-Whk" customClass="ChannelViewCell" customModule="Smack" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DPv-va-Whk" id="eN6-Zh-1IL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5K-nh-3aX">
+                                                            <rect key="frame" x="30" y="10.5" width="48.5" height="23"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="j5K-nh-3aX" firstAttribute="centerY" secondItem="eN6-Zh-1IL" secondAttribute="centerY" id="VFD-Zg-eAf"/>
+                                                        <constraint firstItem="j5K-nh-3aX" firstAttribute="leading" secondItem="eN6-Zh-1IL" secondAttribute="leadingMargin" constant="22" id="eWj-yt-N65"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="channelTitle" destination="j5K-nh-3aX" id="3BD-EK-Fe1"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-ga-OFB">
                                         <rect key="frame" x="113" y="564" width="197" height="75"/>
@@ -116,6 +142,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="asm-AJ-UKn" id="fwx-6K-X74"/>
                         <outlet property="userNameButton" destination="eXg-ga-OFB" id="qhz-53-QBN"/>
                         <outlet property="userProfileImage" destination="Fla-De-dJS" id="wZA-Nz-yrF"/>
                         <segue destination="uFk-gN-9Pe" kind="show" identifier="toLoginVC" id="Mp9-Ts-htn"/>

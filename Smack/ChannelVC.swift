@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ChannelVC: UIViewController {
+class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     
     //Outlets
     @IBOutlet weak var userNameButton: UIButton!
     @IBOutlet weak var userProfileImage: CircleImage!
+    @IBOutlet weak var tableView: UITableView!
     
     
     
@@ -21,7 +22,9 @@ class ChannelVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         self.revealViewController().rearViewRevealWidth = view.frame.size.width - 60 // rear vc nin ne kadar açılacağının ölçüsü
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChangde(_:)), name: NOTIF_USER_DATA_DID_CHANGED, object: nil)
@@ -56,6 +59,7 @@ class ChannelVC: UIViewController {
         }
     }
     
+    // ACTIONS
     @IBAction func prepareForUnwind(segue : UIStoryboardSegue){}
     
     @IBAction func loginButtonPrsd(_ sender: UIButton) {
@@ -74,6 +78,23 @@ class ChannelVC: UIViewController {
         }
     }
 
+    //TABLEVIEW DATASOURCE CODE!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessagesService.instance.channels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell") as? ChannelViewCell{
+            
+            let channel = MessagesService.instance.channels[indexPath.row]
+            cell.configureCell(channel: channel)
+            return cell
+        }
+        return ChannelViewCell()
+    }
+    
+    
     
     
     
