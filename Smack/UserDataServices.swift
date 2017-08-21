@@ -9,6 +9,7 @@
 import Foundation
 
 class UserDataService {
+    
     static let instance = UserDataService()
     
     
@@ -35,8 +36,6 @@ class UserDataService {
     
     func returnUIColorFromString(component: String) -> UIColor {
         //"[0.5, 0.5, 0.5, 1]"
-        
-        print(component)
         
         let scanner = Scanner(string: component)
         let skipped = CharacterSet(charactersIn: "[], ")
@@ -80,6 +79,18 @@ class UserDataService {
         return color
         
     }
+    
+    func logoutUser(){
+        self.id = ""
+        self.avatarColor = ""
+        self.avatarName = ""
+        self.email = ""
+        self.name = ""
+        AuthServices.instance.isLoggedIn = false
+        AuthServices.instance.userEmail = ""
+        AuthServices.instance.authToken = ""
+    }
+    
     
     
     

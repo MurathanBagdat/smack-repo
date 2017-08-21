@@ -20,6 +20,7 @@ class ChannelVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         self.revealViewController().rearViewRevealWidth = view.frame.size.width - 60 // rear vc nin ne kadar açılacağının ölçüsü
         
@@ -29,18 +30,19 @@ class ChannelVC: UIViewController {
     func userDataDidChangde(_ notif : Notification){
         
         if AuthServices.instance.isLoggedIn {
+            
             userNameButton.setTitle(UserDataService.instance.name, for: .normal)
             
             userProfileImage.image = UIImage(named: UserDataService.instance.avatarName)
             
             userProfileImage.backgroundColor = UserDataService.instance.returnUIColorFromString(component: UserDataService.instance.avatarColor)
-            
-            print("çağrıldı1")
-            
+
         }else{
+            
             userNameButton.setTitle("Login", for: .normal)
             userProfileImage.image = UIImage(named: "menuProfileIcon")
             userProfileImage.backgroundColor = UIColor.clear
+            
         }
         
         
@@ -52,7 +54,19 @@ class ChannelVC: UIViewController {
     
     
     @IBAction func loginButtonPrsd(_ sender: UIButton) {
+        
+        if AuthServices.instance.isLoggedIn {
+            
+            let profile = ProfileVC()
+            profile.modalPresentationStyle = .custom
+            profile.modalTransitionStyle = .crossDissolve
+            present(profile, animated: true, completion: nil)
+            
+        }else{
+            
         performSegue(withIdentifier: TO_LOGINVC_SEGUE, sender: nil)
+            
+        }
     }
 
     

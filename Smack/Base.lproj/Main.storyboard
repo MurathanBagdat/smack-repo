@@ -75,11 +75,11 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-ga-OFB">
-                                        <rect key="frame" x="113" y="564" width="54" height="75"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-ga-OFB">
+                                        <rect key="frame" x="113" y="564" width="197" height="75"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                         <state key="normal" title="Login">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="loginButtonPrsd:" destination="aHH-Bj-lqF" eventType="touchUpInside" id="5Vw-e8-7Jz"/>
@@ -91,6 +91,7 @@
                                     <constraint firstAttribute="trailing" secondItem="L3R-XH-GQX" secondAttribute="trailing" constant="75" id="45H-Kb-XPX"/>
                                     <constraint firstAttribute="trailing" secondItem="asm-AJ-UKn" secondAttribute="trailing" id="4Ik-dZ-syY"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="Fla-De-dJS" secondAttribute="bottom" constant="20" id="7HV-gq-uIi"/>
+                                    <constraint firstAttribute="trailing" secondItem="eXg-ga-OFB" secondAttribute="trailing" constant="65" id="7sj-ye-HD8"/>
                                     <constraint firstItem="L3R-XH-GQX" firstAttribute="centerY" secondItem="69L-ab-if6" secondAttribute="centerY" id="FkZ-bh-ind"/>
                                     <constraint firstItem="Fla-De-dJS" firstAttribute="leading" secondItem="b2p-zA-hf5" secondAttribute="leadingMargin" constant="15" id="NxO-gJ-rEu"/>
                                     <constraint firstItem="eXg-ga-OFB" firstAttribute="centerY" secondItem="Fla-De-dJS" secondAttribute="centerY" id="YRR-Po-jdg"/>
@@ -264,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q33-Kk-Qa2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639" y="-158"/>
+            <point key="canvasLocation" x="2162" y="-157"/>
         </scene>
         <!--Create AccountVC-->
         <scene sceneID="Usw-6T-GBf">
@@ -453,7 +454,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBF-65-SZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="98x-p0-Hog" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2128" y="-158"/>
+            <point key="canvasLocation" x="3182" y="-157"/>
         </scene>
         <!--Avatar PickerVC-->
         <scene sceneID="YmG-hO-4vb">
@@ -547,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jin-D3-mCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2595" y="-158"/>
+            <point key="canvasLocation" x="4127" y="-157"/>
         </scene>
         <!--ChatVC-->
         <scene sceneID="jva-EW-9fb">
