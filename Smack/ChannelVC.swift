@@ -99,11 +99,18 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     }
     @IBAction func addButtonPrsd(_ sender: UIButton) {
         
+        if AuthServices.instance.isLoggedIn{
+            
         let channelVC = CreateChannelVC()
         channelVC.modalPresentationStyle = .custom
         channelVC.modalTransitionStyle = .crossDissolve
         present(channelVC, animated: true, completion: nil)
-        
+            
+        }else{
+            
+            // show an alert!
+            
+        }
     }
 
     //TABLEVIEW DATASOURCE CODE!
@@ -122,6 +129,25 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         return ChannelViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let channel = MessagesService.instance.channels[indexPath.row]
+        MessagesService.instance.selectedChannel = channel
+        
+        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
+        
+        UIView.animate(withDuration: 1) {
+        
+            self.revealViewController().revealToggle(animated: true)
+
+        }
+        
+        
+        
+  }
+
+        
+        
     
     
     

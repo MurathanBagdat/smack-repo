@@ -17,6 +17,7 @@ class AuthServices {
     let defaults = UserDefaults.standard
     
     var isLoggedIn : Bool {
+        
         get {
             return defaults.bool(forKey: LOGED_IN_KEY)
         }
@@ -142,7 +143,7 @@ class AuthServices {
                 guard let data = response.data else {return}
               
                 let json = JSON(data : data)
-                print(json)
+                
                 
                 self.setupUserInfo(data: data)
                 
@@ -158,7 +159,7 @@ class AuthServices {
     }
     
     
-    func setupUserInfo(data : Data){
+    func setupUserInfo(data : Data) {
         
         let json = JSON(data : data)
         

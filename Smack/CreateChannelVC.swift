@@ -46,7 +46,7 @@ class CreateChannelVC: UIViewController {
         
         if AuthServices.instance.isLoggedIn {
             guard let name = nameTextLabel.text , nameTextLabel.text != "" else {return}
-            guard let description = descriptionTextLabel.text , descriptionTextLabel.text != "" else {return}
+            guard let description = descriptionTextLabel.text else {return}
             
             SocketService.instance.addChannel(name: name, description: description) { (succes) in
                 if succes{

@@ -26,6 +26,8 @@ class ChatVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChanged(_notif:)), name: NOTIF_USER_DATA_DID_CHANGED, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSeleceted(_notif:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
+        
         
         if AuthServices.instance.isLoggedIn {
             
@@ -39,17 +41,17 @@ class ChatVC: UIViewController {
         
     }
     
-    
-    func userDataDidChanged(_notif : Notification){   // log in yada log out olduğuna chatVC de yapılacaklar
+    // log in yada log out olduğuna chatVC de yapılacaklar
+
+    func userDataDidChanged(_notif : Notification){
         if AuthServices.instance.isLoggedIn {
             
             onLoginGetMessages()
         }else{
             channelLabel.text = "Please Log In"
         }
- 
     }
-    
+
     func onLoginGetMessages(){
         
         MessagesService.instance.findAllChannles { (succes) in
@@ -57,6 +59,19 @@ class ChatVC: UIViewController {
                 //do stuff with channels
             }
         }
+    }
+    
+    //Channel seçildiğinde yapılacaklar
+    func channelSeleceted(_notif : Notification){
+        
+        updateWithChannel()
+    }
+    
+    func updateWithChannel(){
+        
+        let channelName = MessagesService.instance.selectedChannel?.channelTitle ?? "Unknown"
+        channelLabel.text = "#\(channelName)"
+        
     }
   
 

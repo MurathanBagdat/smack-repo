@@ -75,7 +75,7 @@ class UserDataService {
         
     }
     
-    func logoutUser(){
+    func logoutUser() {
         self.id = ""
         self.avatarColor = ""
         self.avatarName = ""
