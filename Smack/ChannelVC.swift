@@ -31,8 +31,8 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChangde(_:)), name: NOTIF_USER_DATA_DID_CHANGED, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsAreLoaded(_notif:)), name: NOTIF_CHANNELS_LOADED, object: nil)
-        let tab = UITapGestureRecognizer(target: self, action: #selector(ChannelVC.dismissTheKeyboard))
-        tableView.addGestureRecognizer(tab)
+//        let tab = UITapGestureRecognizer(target: self, action: #selector(ChannelVC.dismissTheKeyboard))
+//        tableView.addGestureRecognizer(tab)
         
         //Serverdan gelen channel sinyaline bağlı
         SocketService.instance.getChannel { (succes) in
@@ -150,9 +150,9 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
   }
 
     //closing Keyboard
-    func dismissTheKeyboard(){
-        self.view.endEditing(true)
-    }
+//    func dismissTheKeyboard(){
+//        self.view.endEditing(true)
+//    }
 
     
 }

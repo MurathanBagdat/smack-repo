@@ -56,6 +56,10 @@ class MessagesService {
     func removeChannels(){
         channels.removeAll()
     }
+    func removeMessages(){
+        messages.removeAll()
+    }
+
     
     
     func getMessagesByChannelId(channelId : String, comletion : @escaping CompletionHandler){

@@ -19,7 +19,7 @@ class SocketService : NSObject{
     let socket = SocketIOClient(socketURL: URL(string: BASE_URL)!)
     
     
-   override init() {
+    override init() {
         super.init()
     }
     
@@ -45,19 +45,19 @@ class SocketService : NSObject{
     
     // serverdan gelen bilgilere tune olmak için bu func kullanılır
     func getChannel(comletion : @escaping CompletionHandler){
-   
+        
         socket.on("channelCreated") { (dataArray, ack) in
             
             guard let channelName = dataArray[0] as? String else {return}
             guard let channelDescription = dataArray[1] as? String else {return}
             guard let channelId = dataArray[2] as? String else {return}
-
-
+            
+            
             let newChannel = Channel(id: channelId, channelTitle: channelName, channelDescription: channelDescription)
             
             MessagesService.instance.channels.append(newChannel)
             comletion(true)
-
+            
         }
     }
     // servere yayın yapar her mesaj gönderildiğinde
@@ -68,7 +68,7 @@ class SocketService : NSObject{
         socket.emit("newMessage", messageBody, userId, channelId , user.name , user.avatarName, user.avatarColor)
         
         completion(true)
-
+        
     }
     // serverdan gelen mesajları dinler
     func getMessages(completion : @escaping CompletionHandler){
@@ -76,7 +76,7 @@ class SocketService : NSObject{
         socket.on("messageCreated") { (dataArray, ack) in
             
             guard let messageBody = dataArray[0] as? String else {return}
-           // guard let userId = dataArray[1] as? String else {return}
+            // guard let userId = dataArray[1] as? String else {return}
             guard let channelId = dataArray[2] as? String else {return}
             guard let userName = dataArray[3] as? String else {return}
             guard let userAvatar = dataArray[4] as? String else {return}
@@ -84,31 +84,34 @@ class SocketService : NSObject{
             guard let id = dataArray[6] as? String else {return}
             guard let timeStamp = dataArray[7] as? String else {return}
             
-            let newMessage = Message(id: id, userName: userName, userAvatar: userAvatar, message: messageBody, channelId: channelId, userAvatarColor: userAvatarColor, timeStamp: timeStamp)
             
+            if channelId == MessagesService.instance.selectedChannel?.id  && AuthServices.instance.isLoggedIn {
+                
+                let newMessage = Message(id: id, userName: userName, userAvatar: userAvatar, message: messageBody, channelId: channelId, userAvatarColor: userAvatarColor, timeStamp: timeStamp)
+                MessagesService.instance.messages.append(newMessage)
+                completion(true)
+                
+            }else{
+                completion(false)
+            }
+                
             
-            MessagesService.instance.messages.append(newMessage)
-            completion(true)
-
             
             
         }
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
