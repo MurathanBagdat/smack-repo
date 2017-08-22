@@ -15,6 +15,7 @@
 		077101511F4B25460039CB82 /* CreateChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0771014F1F4B25460039CB82 /* CreateChannelVC.swift */; };
 		077101521F4B25460039CB82 /* CreateChannelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077101501F4B25460039CB82 /* CreateChannelVC.xib */; };
 		077101541F4B37360039CB82 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077101531F4B37360039CB82 /* SocketService.swift */; };
+		077101561F4C5CAB0039CB82 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077101551F4C5CAB0039CB82 /* Message.swift */; };
 		07C3A20D1F49E75C005F2805 /* AvatarPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3A20C1F49E75C005F2805 /* AvatarPickerVC.swift */; };
 		07C3A20F1F49E7A4005F2805 /* AvatarPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3A20E1F49E7A4005F2805 /* AvatarPickerCell.swift */; };
 		07C3A2111F4A33F1005F2805 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3A2101F4A33F1005F2805 /* CircleImage.swift */; };
@@ -44,6 +45,7 @@
 		0771014F1F4B25460039CB82 /* CreateChannelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChannelVC.swift; sourceTree = "<group>"; };
 		077101501F4B25460039CB82 /* CreateChannelVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateChannelVC.xib; sourceTree = "<group>"; };
 		077101531F4B37360039CB82 /* SocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		077101551F4C5CAB0039CB82 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		07C3A20C1F49E75C005F2805 /* AvatarPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarPickerVC.swift; sourceTree = "<group>"; };
 		07C3A20E1F49E7A4005F2805 /* AvatarPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarPickerCell.swift; sourceTree = "<group>"; };
 		07C3A2101F4A33F1005F2805 /* CircleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				0771014B1F4B198D0039CB82 /* Channel.swift */,
+				077101551F4C5CAB0039CB82 /* Message.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				07C3A20D1F49E75C005F2805 /* AvatarPickerVC.swift in Sources */,
 				07FED93F1F48A97E0063D223 /* RoundedButton.swift in Sources */,
 				0771014C1F4B198D0039CB82 /* Channel.swift in Sources */,
+				077101561F4C5CAB0039CB82 /* Message.swift in Sources */,
 				07C3A2111F4A33F1005F2805 /* CircleImage.swift in Sources */,
 				07D767C21F47307E00E21A44 /* AppDelegate.swift in Sources */,
 				07E8A6A31F48705B00D46809 /* CreateAccountVC.swift in Sources */,

@@ -56,7 +56,21 @@ class ChatVC: UIViewController {
         
         MessagesService.instance.findAllChannles { (succes) in
             if succes{
-                //do stuff with channels
+                
+                if MessagesService.instance.channels.count > 0 {
+                    
+                    guard let id = MessagesService.instance.channels[0].id else { return }
+                    
+                    MessagesService.instance.getMessagesByChannelId(channelId: id, comletion: { (succes) in
+                        if succes{
+                            // reload the messages in tableView!
+                        }
+                    })
+
+                }else{
+                    
+                    self.channelLabel.text = "No Channel Yet"
+                }
             }
         }
     }
@@ -70,9 +84,27 @@ class ChatVC: UIViewController {
     func updateWithChannel(){
         
         let channelName = MessagesService.instance.selectedChannel?.channelTitle ?? "Unknown"
+        
         channelLabel.text = "#\(channelName)"
         
+        getMessagesForSelectedChannel()
     }
+    
+    func getMessagesForSelectedChannel(){
+        
+        if let selectedChannelId = MessagesService.instance.selectedChannel?.id{
+            
+            MessagesService.instance.getMessagesByChannelId(channelId: selectedChannelId, comletion: { (succes) in
+                if succes{
+                    // show the messages in tableView
+                }
+            })
+            
+        }else{
+            // shown an alert
+        }
+    }
+    
   
 
 }

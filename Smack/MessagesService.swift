@@ -17,6 +17,7 @@ class MessagesService {
     
     var channels = [Channel]()
     var selectedChannel : Channel?
+    var messages = [Message]()
     
     func findAllChannles(completion : @escaping CompletionHandler) {
         
@@ -50,13 +51,73 @@ class MessagesService {
             }
             
         }
-        
     }
-    
     
     func removeChannels(){
         channels.removeAll()
     }
+    
+    
+    func getMessagesByChannelId(channelId : String, comletion : @escaping CompletionHandler){
+        
+        Alamofire.request("\(URL_GET_MESSAGES)\(channelId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER_BearerOnly).responseJSON { (response) in
+            
+            if response.result.error == nil {
+                
+                guard let data = response.data else {return}
+                
+                guard let json = JSON(data : data).array else {return}
+            
+                
+                for object in json {
+                    
+                    let name = object["userName"].stringValue
+                    let messageBody = object["messageBody"].stringValue
+                    let userAvatar = object["userAvatar"].stringValue
+                    let userAvatarColor = object["userAvatarColor"].stringValue
+                    let timeStamp = object["timeStamp"].stringValue
+                    let id = object["_id"].stringValue
+                    let channelId = object["channelId"].stringValue
+                    
+                    let message = Message(id: id, userName: name, userAvatar: userAvatar, message: messageBody, channelId: channelId, userAvatarColor: userAvatarColor, timeStamp: timeStamp)
+                    
+                    self.messages.append(message)
+        
+                }
+                
+                comletion(true)
+                
+                
+            }else {
+                
+                debugPrint(response.result.error as Any)
+                comletion(false)
+            }
+            
+            
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

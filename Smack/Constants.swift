@@ -37,6 +37,7 @@ let URL_ADD_USER = "\(BASE_URL)user/add"
 let URL_FIND_USER = "\(BASE_URL)/user/byEmail/"
 let URL_FINDALLCHANNELS = "\(BASE_URL)channel"
 let URL_ADDCHANNEL = "\(URL_FINDALLCHANNELS)/add"
+let URL_GET_MESSAGES = "\(BASE_URL)message/byChannel/"
 
 
 
