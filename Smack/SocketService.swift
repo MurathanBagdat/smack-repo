@@ -23,27 +23,29 @@ class SocketService : NSObject{
         super.init()
     }
     
-    
-    func establishConnection(){  //app açıldığı yerde çağır app delegate
+    //app açıldığı yerde çağır app delegate
+    func establishConnection(){
         socket.connect()
     }
     
+    //app delegate kaparken
     func closeConnection(){
-        socket.disconnect()      //app delegate kaparken
+        socket.disconnect()
     }
     
-    
-    func addChannel(name :String, description : String , completion : @escaping CompletionHandler){  //appten channel açıldıgına dair bilgi verir servera sıralamalar önemli aşağıdaki api kodundaki sıralamya ve event ismine göre!!
+    //appten channel açıldıgına dair bilgi verir servera sıralamalar önemli aşağıdaki api kodundaki sıralamya ve event ismine göre!!
+    func addChannel(name :String, description : String , completion : @escaping CompletionHandler){
         
         socket.emit("newChannel", name , description)
         completion(true)
         
     }
     
+    
+    
+    // serverdan gelen bilgilere tune olmak için bu func kullanılır
     func getChannel(comletion : @escaping CompletionHandler){
-        
-        
-        // serverdan gelen bilgilere tune olmak için bu func kullanılır
+   
         socket.on("channelCreated") { (dataArray, ack) in
             
             guard let channelName = dataArray[0] as? String else {return}
@@ -55,14 +57,54 @@ class SocketService : NSObject{
             
             MessagesService.instance.channels.append(newChannel)
             comletion(true)
+
+        }
+    }
+    // servere yayın yapar her mesaj gönderildiğinde
+    func addMessage(messageBody : String , userId : String , channelId : String , completion : CompletionHandler){
+        
+        let user = UserDataService.instance
+        
+        socket.emit("newMessage", messageBody, userId, channelId , user.name , user.avatarName, user.avatarColor)
+        
+        completion(true)
+
+    }
+    // serverdan gelen mesajları dinler
+    func getMessages(completion : @escaping CompletionHandler){
+        
+        socket.on("messageCreated") { (dataArray, ack) in
             
-        
-        
-        
+            guard let messageBody = dataArray[0] as? String else {return}
+           // guard let userId = dataArray[1] as? String else {return}
+            guard let channelId = dataArray[2] as? String else {return}
+            guard let userName = dataArray[3] as? String else {return}
+            guard let userAvatar = dataArray[4] as? String else {return}
+            guard let userAvatarColor = dataArray[5] as? String else {return}
+            guard let id = dataArray[6] as? String else {return}
+            guard let timeStamp = dataArray[7] as? String else {return}
+            
+            let newMessage = Message(id: id, userName: userName, userAvatar: userAvatar, message: messageBody, channelId: channelId, userAvatarColor: userAvatarColor, timeStamp: timeStamp)
+            
+            
+            MessagesService.instance.messages.append(newMessage)
+            completion(true)
+
+            
+            
         }
         
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

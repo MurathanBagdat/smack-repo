@@ -141,10 +141,7 @@ class AuthServices {
             if response.result.error == nil {
     
                 guard let data = response.data else {return}
-              
-                let json = JSON(data : data)
-                
-                
+             
                 self.setupUserInfo(data: data)
                 
                 completion(true)

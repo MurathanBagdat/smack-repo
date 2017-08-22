@@ -34,16 +34,14 @@ class CreateChannelVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
+ 
     //Actions
     @IBAction func closeButtonPrsd(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func createButtonPrsd(_ sender: UIButton) {
-        
-        
+      
         if AuthServices.instance.isLoggedIn {
             guard let name = nameTextLabel.text , nameTextLabel.text != "" else {return}
             guard let description = descriptionTextLabel.text else {return}
