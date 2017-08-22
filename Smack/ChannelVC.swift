@@ -28,6 +28,15 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         self.revealViewController().rearViewRevealWidth = view.frame.size.width - 60 // rear vc nin ne kadar açılacağının ölçüsü
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChangde(_:)), name: NOTIF_USER_DATA_DID_CHANGED, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsAreLoaded(_notif:)), name: NOTIF_CHANNELS_LOADED, object: nil)
+        
+        SocketService.instance.getChannel { (succes) in
+            if succes {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
     
     
@@ -37,9 +46,15 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
        setupUserInfo()
     }
     
-    func userDataDidChangde(_ notif : Notification) {
+    func channelsAreLoaded(_notif : Notification){
+        
+        tableView.reloadData()
+    }
+    
+    func userDataDidChangde(_ notif : Notification) {   //log in yada log out oluduğunda channelVCde yapılacaklaklar
         
        setupUserInfo()
+        
     }
     
     func setupUserInfo() {
@@ -53,9 +68,14 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
             userProfileImage.backgroundColor = UserDataService.instance.returnUIColorFromString(component: UserDataService.instance.avatarColor)
             
         } else {
+            
             userNameButton.setTitle("Login", for: .normal)
+            
             userProfileImage.image = UIImage(named: "menuProfileIcon")
+            
             userProfileImage.backgroundColor = UIColor.clear
+            
+            tableView.reloadData()
         }
     }
     
@@ -76,6 +96,14 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: TO_LOGINVC_SEGUE, sender: nil)
             
         }
+    }
+    @IBAction func addButtonPrsd(_ sender: UIButton) {
+        
+        let channelVC = CreateChannelVC()
+        channelVC.modalPresentationStyle = .custom
+        channelVC.modalTransitionStyle = .crossDissolve
+        present(channelVC, animated: true, completion: nil)
+        
     }
 
     //TABLEVIEW DATASOURCE CODE!

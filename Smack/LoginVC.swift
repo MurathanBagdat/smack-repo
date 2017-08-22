@@ -61,6 +61,7 @@ class LoginVC: UIViewController {
                         self.spinner.stopAnimating()
                         UIApplication.shared.endIgnoringInteractionEvents()
                         
+      
                         NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGED, object: nil)
                         self.dismiss(animated: true, completion: nil)
                     }

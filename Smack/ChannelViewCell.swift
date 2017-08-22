@@ -9,7 +9,7 @@
 import UIKit
 
 class ChannelViewCell: UITableViewCell {
-
+    
     
     //Outlets
     @IBOutlet weak var channelTitle: UILabel!
@@ -19,7 +19,7 @@ class ChannelViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -31,7 +31,9 @@ class ChannelViewCell: UITableViewCell {
     }
     
     func configureCell(channel : Channel){
-        channelTitle.text = "#\(channel.channelTitle)" ?? "Couldn't Find The Title.."
+        if let title = channel.channelTitle{
+            channelTitle.text = "#\(title)"
+        }
     }
-
+    
 }

@@ -35,7 +35,8 @@ let URL_REGISTER = "\(BASE_URL)account/register"
 let URL_LOGIN = "\(BASE_URL)account/login"
 let URL_ADD_USER = "\(BASE_URL)user/add"
 let URL_FIND_USER = "\(BASE_URL)/user/byEmail/"
-let URL_FINDALLCHANNELS = "\(BASE_URL)/channel"
+let URL_FINDALLCHANNELS = "\(BASE_URL)channel"
+let URL_ADDCHANNEL = "\(URL_FINDALLCHANNELS)/add"
 
 
 
@@ -67,6 +68,8 @@ let SMACK_PURPLE_PLACEHOLDER = #colorLiteral(red: 0.1871688366, green: 0.2742924
 //Notification Constants
 
 let NOTIF_USER_DATA_DID_CHANGED = Notification.Name("notifUserDataChanged")
+let NOTIF_CHANNELS_LOADED = Notification.Name("notifUserChannelsLoaded")
+
 
 
 
