@@ -30,6 +30,7 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //Variables
     var isTyping = false
+    var timer = Timer()
 
    
     override func viewDidLoad() {
