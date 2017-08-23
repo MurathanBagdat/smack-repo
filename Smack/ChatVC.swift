@@ -19,6 +19,7 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomLayoutConstraint2: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var typingUsersLabel: UILabel!
     @IBOutlet weak var textBoxTralingConstraint: NSLayoutConstraint!
 
 
@@ -78,12 +79,51 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         
         
+        //Yazan userı görmek için
+        SocketService.instance.getTypingUser { (typingUsers) in
+            
+            guard let channelId = MessagesService.instance.selectedChannel?.id else {return}
+            var names = ""
+            var numberOfTypers = 0
+            
+            for (typingUser , channel) in typingUsers {
+                if channelId == channel && typingUser != UserDataService.instance.name {
+                    
+                    if names == ""{
+                    
+                        names = typingUser
+                    }else{
+                        
+                        names  = "\(names), \(typingUser)"
+                    }
+                    
+                    numberOfTypers += 1
+                }
+            }
+            if numberOfTypers > 0 && AuthServices.instance.isLoggedIn {
+                var verb = "is"
+                if numberOfTypers > 1 {
+                    verb = "are"
+                }
+                
+                self.typingUsersLabel.text = "\(names) \(verb) typing.."
+            }else{
+                self.typingUsersLabel.text = ""
+            }
+        }
+        
+        
+        //mesajları almak için
         SocketService.instance.getMessages { (succes) in
             if succes{
                 self.tableView.reloadData()
                 self.scrolDownTheTableView()
             }
         }
+        
+        
+        
+        
         
     }
     
@@ -173,13 +213,16 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 SocketService.instance.addMessage(messageBody: message, userId: userId, channelId: selectedChannelId, completion: { (succes) in
                     if succes{
                         
-                        messageTextField.text =  ""
+                        self.messageTextField.text =  ""
                     }
                 })
             }
         }
     }
+
     @IBAction func messageBoxEditing(_ sender: UITextField) {
+        
+        guard let selectedChannelId = MessagesService.instance.selectedChannel?.id else {return}
         
         if messageTextField.text == "" {
             isTyping = false
@@ -188,12 +231,24 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 self.textBoxTralingConstraint.constant = 15
             })
             
+            SocketService.instance.currentUserStopTyping(completion: { (succes) in
+                if succes{
+                    
+                }
+            })
+            
         }else{
             
             if isTyping == true {
                 UIView.animate(withDuration: 0.3, animations: {
                     self.sendButton.isHidden = false
                     self.textBoxTralingConstraint.constant = 50
+                })
+                
+                SocketService.instance.currenUserIsTyping(channelId: selectedChannelId , completion: { (succes) in
+                    if succes{
+                        
+                    }
                 })
             }
             

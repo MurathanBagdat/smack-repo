@@ -33,7 +33,7 @@ class SocketService : NSObject{
         socket.disconnect()
     }
     
-    //appten channel açıldıgına dair bilgi verir servera sıralamalar önemli aşağıdaki api kodundaki sıralamya ve event ismine göre!!
+    //appten channel açıldıgına dair bilgi verir servera (sıralamalar önemli aşağıdaki api kodundaki sıralamya ve event ismine göre!!)
     func addChannel(name :String, description : String , completion : @escaping CompletionHandler){
         
         socket.emit("newChannel", name , description)
@@ -61,7 +61,7 @@ class SocketService : NSObject{
         }
     }
     // servere yayın yapar her mesaj gönderildiğinde
-    func addMessage(messageBody : String , userId : String , channelId : String , completion : CompletionHandler){
+    func addMessage(messageBody : String , userId : String , channelId : String , completion : @escaping CompletionHandler){
         
         let user = UserDataService.instance
         
@@ -100,6 +100,44 @@ class SocketService : NSObject{
             
         }
     }
+    
+    func currenUserIsTyping(channelId : String , completion : @escaping CompletionHandler){
+        
+        if AuthServices.instance.isLoggedIn{
+        
+        socket.emit("startType", UserDataService.instance.name , channelId)
+            
+            completion(true)
+        }
+    }
+    
+    func currentUserStopTyping(completion : @escaping CompletionHandler){
+        
+        if AuthServices.instance.isLoggedIn{
+            
+            socket.emit("stopType", UserDataService.instance.name)
+            completion(true)
+        }
+    }
+    
+    func getTypingUser(_ completion : @escaping (_ typingUser : [String:String]) -> Void){
+        
+        if AuthServices.instance.isLoggedIn {
+            
+            socket.on("userTypingUpdate", callback: { (dataArray, ack) in
+                
+                guard let typingUser = dataArray[0] as? [String : String] else {return}
+                
+                completion(typingUser)
+                
+                
+            })
+            
+        }
+        
+        
+    }
+    
 
 }
     
