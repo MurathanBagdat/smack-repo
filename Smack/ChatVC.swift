@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 
 
-class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate , UNUserNotificationCenterDelegate {
     
     
     // Outlets
@@ -35,7 +35,7 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let alertSound = SimpleSound(named: "clockalert")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 80
@@ -51,6 +51,16 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         //keyboardStuff#######
+        
+        
+        
+        //LocalNotification##
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
+        center.delegate = self
+        //LocalNotification##
         
         
         
@@ -123,7 +133,7 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        //mesajları almak için
+        //Mesajları almak için
         SocketService.instance.getMessages { (newMessage) in
             
             if AuthServices.instance.isLoggedIn{
@@ -132,9 +142,9 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 if selectedMessageId == newMessage.channelId{
                     
                     MessagesService.instance.messages.append(newMessage)
+                    alertSound.play()
                     self.tableView.reloadData()
                     self.scrolDownTheTableView()
-                    
                 }
             }
         }
@@ -374,8 +384,24 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
     }
     
+    //SoundNotification
+//    func soundNotification(){
+//        let content = UNMutableNotificationContent()
+//        content.sound = UNNotificationSound(named: "clockalarm.caf")
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.3, repeats: false)
+//        print("hit")
+//        let request = UNNotificationRequest(identifier: "Alert", content: content, trigger: trigger)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//    }
+//    
+//    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void){
+//        completionHandler([.sound])
+//    }
+// 
+//    
     
     
     
-    
+
+
 }
