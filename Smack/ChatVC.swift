@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import UserNotifications
+
 
 class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -28,7 +30,7 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //Variables
     var isTyping = false
-    
+
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +44,8 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         textBoxTralingConstraint.constant = 15
         
         tryToConnectView.isHidden = true
-
         
+       
         //keyboardStuff#######
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -135,6 +137,9 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
+        
+        //starting the timer
+        scheduledTimerWithTimeInterval()
     }
     //end################################################################end
     
@@ -344,7 +349,6 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func updateBottomLayoutConstraintWithNotification(notification: NSNotification) {
         let userInfo = notification.userInfo!
         
-        // get data from the userInfo
         let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
@@ -353,14 +357,22 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         bottomLayoutConstraint2.constant = (view.bounds).maxY - (convertedKeyboardEndFrame).minY
         
-        
-        // animate the changes
         UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve], animations: {
             self.view.layoutIfNeeded()
             self.scrolDownTheTableView()
         }, completion: nil)
     }
 
+    // timer
+    func scheduledTimerWithTimeInterval(){
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ChatVC.reloadDate), userInfo: nil, repeats: true)
+        
+    }
+    func reloadDate(){
+        self.tableView.reloadData()
+        
+    }
+    
     
     
     

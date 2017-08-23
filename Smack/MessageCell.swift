@@ -55,16 +55,8 @@ class MessageCell: UITableViewCell {
         
         if let userSendDate = sendDate {
             
-            var timeOffset = currentDate.offset(from: userSendDate)
-            
-            if timeOffset.contains("sn"){
-                let end = timeOffset.index(timeOffset.endIndex, offsetBy: -2)
-                let timeOffSetInt = Int(timeOffset.substring(to: end))
-                
-                if timeOffSetInt! < 10 {
-                    timeOffset = "just now.."
-                }
-            }
+            let timeOffset = currentDate.offset(from: userSendDate)
+          
             timeStampLabel.text = timeOffset
         }
         
