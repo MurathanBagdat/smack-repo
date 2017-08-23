@@ -71,7 +71,7 @@ class SocketService : NSObject{
         
     }
     // serverdan gelen mesajları dinler
-    func getMessages(completion : @escaping CompletionHandler){
+    func getMessages(completion : @escaping (_ newMessage : Message)-> Void) {
         
         socket.on("messageCreated") { (dataArray, ack) in
             
@@ -83,21 +83,10 @@ class SocketService : NSObject{
             guard let userAvatarColor = dataArray[5] as? String else {return}
             guard let id = dataArray[6] as? String else {return}
             guard let timeStamp = dataArray[7] as? String else {return}
-            
-            
-            if channelId == MessagesService.instance.selectedChannel?.id  && AuthServices.instance.isLoggedIn {
                 
                 let newMessage = Message(id: id, userName: userName, userAvatar: userAvatar, message: messageBody, channelId: channelId, userAvatarColor: userAvatarColor, timeStamp: timeStamp)
-                MessagesService.instance.messages.append(newMessage)
-                completion(true)
-                
-            }else{
-                completion(false)
-            }
-                
-            
-            
-            
+
+            completion(newMessage)
         }
     }
     
@@ -129,13 +118,11 @@ class SocketService : NSObject{
                 guard let typingUser = dataArray[0] as? [String : String] else {return}
                 
                 completion(typingUser)
-                
-                
+
             })
             
         }
-        
-        
+
     }
     
 

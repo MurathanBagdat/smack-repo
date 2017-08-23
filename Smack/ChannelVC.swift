@@ -41,6 +41,18 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
             }
         }
         
+        SocketService.instance.getMessages { (newMessage) in
+            if AuthServices.instance.isLoggedIn {
+                let selectedChannelId = MessagesService.instance.selectedChannel?.id
+                
+                if selectedChannelId != newMessage.channelId{
+                    
+                    MessagesService.instance.unreadChannels.append(newMessage.channelId)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
     }
     
     
@@ -135,8 +147,21 @@ class ChannelVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let channel = MessagesService.instance.channels[indexPath.row]
-        MessagesService.instance.selectedChannel = channel
+        let selectedChannel = MessagesService.instance.channels[indexPath.row]
+        MessagesService.instance.selectedChannel = selectedChannel
+        
+        
+        if MessagesService.instance.unreadChannels.count > 0 {
+            
+            MessagesService.instance.unreadChannels = MessagesService.instance.unreadChannels.filter{$0 != selectedChannel.id}
+        }
+        
+        let path = IndexPath(row: indexPath.row , section: 0 )
+        self.tableView.reloadRows(at: [path], with: UITableViewRowAnimation.none)
+        self.tableView.selectRow(at: path, animated: false, scrollPosition: UITableViewScrollPosition.none)
+        
+        
+        
         
         NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
         

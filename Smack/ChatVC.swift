@@ -21,6 +21,8 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var typingUsersLabel: UILabel!
     @IBOutlet weak var textBoxTralingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tryToConnectView: UIView!
+    @IBOutlet weak var tryingToConnectViewTextLabel: UILabel!
 
 
     
@@ -38,6 +40,8 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         sendButton.isHidden = true
         textBoxTralingConstraint.constant = 15
+        
+        tryToConnectView.isHidden = true
 
         
         //keyboardStuff#######
@@ -67,15 +71,19 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //let pan = UIPanGestureRecognizer(target: self, action: #selector(ChatVC.dismissTheKeyboard))
         //self.view.addGestureRecognizer(pan)
         //DismissingTheKeyborad####
+
         
-     
         if AuthServices.instance.isLoggedIn {
+            tryToConnectView.isHidden = false
             AuthServices.instance.findUserByEmail(completion: { (success) in
                 if success{
                 
                     NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGED, object: nil)
+                    self.tryToConnectView.isHidden = true
                 }
             })
+        }else{
+            self.channelLabel.text = "Please Log In"
         }
         
         
@@ -112,20 +120,23 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        
         //mesajları almak için
-        SocketService.instance.getMessages { (succes) in
-            if succes{
-                self.tableView.reloadData()
-                self.scrolDownTheTableView()
+        SocketService.instance.getMessages { (newMessage) in
+            
+            if AuthServices.instance.isLoggedIn{
+                let selectedMessageId = MessagesService.instance.selectedChannel?.id
+                
+                if selectedMessageId == newMessage.channelId{
+                    
+                    MessagesService.instance.messages.append(newMessage)
+                    self.tableView.reloadData()
+                    self.scrolDownTheTableView()
+                    
+                }
             }
         }
-        
-        
-        
-        
-        
     }
+    //end################################################################end
     
     //keyboardKapatma
     func dismissTheKeyboard(){
@@ -177,8 +188,10 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         getMessagesForSelectedChannel()
     }
     
-    func getMessagesForSelectedChannel(){
+    func getMessagesForSelectedChannel() {
         
+        tryToConnectView.isHidden = false
+        tryingToConnectViewTextLabel.text = "Messages are coming.."
         
         MessagesService.instance.messages.removeAll()
         
@@ -188,10 +201,8 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 if succes{
                     
                     self.tableView.reloadData()
-                    
-                    if MessagesService.instance.messages.count > 0 {
-                        self.scrolDownTheTableView()
-                    }
+                    self.scrolDownTheTableView()
+                    self.tryToConnectView.isHidden = true        
                 }
             })
             
@@ -200,7 +211,7 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-  //Actions
+  //ACIONS#############
     @IBAction func sendButtonPrsd(_ sender: UIButton) {
         
         
@@ -213,6 +224,11 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 SocketService.instance.addMessage(messageBody: message, userId: userId, channelId: selectedChannelId, completion: { (succes) in
                     if succes{
                         
+                        SocketService.instance.currentUserStopTyping(completion: { (succes) in
+                            if succes{
+                                
+                            }
+                        })
                         self.messageTextField.text =  ""
                     }
                 })
@@ -257,9 +273,25 @@ class ChatVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
     }
+    @IBAction func refreshButtonPrsd(_ sender: UIButton) {
+        if tryToConnectView.isHidden == false{
+            
+            if AuthServices.instance.isLoggedIn{
+                AuthServices.instance.findUserByEmail(completion: { (success) in
+                    if success{
+                        
+                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGED, object: nil)
+                        self.tryToConnectView.isHidden = true
+                    }
+                })
+            }else{
+                self.channelLabel.text = "Please Log In"
+            }
+            
+        }
+        
+    }
    
-
-    
     //tableView DataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
