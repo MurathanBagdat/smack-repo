@@ -10,6 +10,7 @@
 		071B545E1F4C9D2800233106 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071B545D1F4C9D2800233106 /* MessageCell.swift */; };
 		071C5FD11F4AD567009E0ACF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C5FCF1F4AD567009E0ACF /* ProfileVC.swift */; };
 		071C5FD21F4AD567009E0ACF /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071C5FD01F4AD567009E0ACF /* ProfileVC.xib */; };
+		0725516A1F4D8AEB000ED404 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072551691F4D8AEB000ED404 /* DateExtension.swift */; };
 		075D34941F4C798C0020434F /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075D34931F4C798C0020434F /* KeyboardBoundView.swift */; };
 		0771014A1F4B19410039CB82 /* MessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077101491F4B19410039CB82 /* MessagesService.swift */; };
 		0771014C1F4B198D0039CB82 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0771014B1F4B198D0039CB82 /* Channel.swift */; };
@@ -42,6 +43,7 @@
 		071B545D1F4C9D2800233106 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		071C5FCF1F4AD567009E0ACF /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		071C5FD01F4AD567009E0ACF /* ProfileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
+		072551691F4D8AEB000ED404 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		075D34931F4C798C0020434F /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
 		077101491F4B19410039CB82 /* MessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesService.swift; sourceTree = "<group>"; };
 		0771014B1F4B198D0039CB82 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				0771014D1F4B1CD40039CB82 /* ChannelViewCell.swift */,
 				075D34931F4C798C0020434F /* KeyboardBoundView.swift */,
 				071B545D1F4C9D2800233106 /* MessageCell.swift */,
+				072551691F4D8AEB000ED404 /* DateExtension.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				075D34941F4C798C0020434F /* KeyboardBoundView.swift in Sources */,
+				0725516A1F4D8AEB000ED404 /* DateExtension.swift in Sources */,
 				077101541F4B37360039CB82 /* SocketService.swift in Sources */,
 				071C5FD11F4AD567009E0ACF /* ProfileVC.swift in Sources */,
 				07CB5B971F474B4C001681E8 /* ChatVC.swift in Sources */,

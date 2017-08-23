@@ -38,9 +38,44 @@ class MessageCell: UITableViewCell {
         
         userName.text = message.userName
         userAvatarImage.image = UIImage(named: message.userAvatar)
-        timeStampLabel.text = message.timeStamp
+        
         messageBodyLabel.text = message.message
         userAvatarImage.backgroundColor = UserDataService.instance.returnUIColorFromString(component: message.userAvatarColor)
+        
+        
+        guard var isoDate = message.timeStamp else {return}
+        
+        
+        let end = isoDate.index(isoDate.endIndex, offsetBy: -5)
+        isoDate = isoDate.substring(to: end)
+        
+        let isoFormatter = ISO8601DateFormatter()
+        let sendDate = isoFormatter.date(from: isoDate.appending("Z"))
+        let currentDate = Date().addingTimeInterval(1)
+        
+        if let userSendDate = sendDate {
+            
+            var timeOffset = currentDate.offset(from: userSendDate)
+            
+            if timeOffset.contains("sn"){
+                let end = timeOffset.index(timeOffset.endIndex, offsetBy: -2)
+                let timeOffSetInt = Int(timeOffset.substring(to: end))
+                
+                if timeOffSetInt! < 10 {
+                    timeOffset = "just now.."
+                }
+            }
+            timeStampLabel.text = timeOffset
+        }
+        
+        
+        
+
+        
+        
+        
+        
+        
         
         
     }
